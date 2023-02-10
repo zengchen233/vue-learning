@@ -10,6 +10,14 @@
     <button v-on:click="num++">增加</button>
     <button @click="decrement">减少</button>
     <h2>num = {{num}}</h2>
+    <hr>
+    事件冒泡测试: <br>
+    <div style="background-color: lightblue" @click="print('div被点击了')">
+        <button @click.stop="print('点击了button')">点我试试</button>
+    </div>
+    <br>
+    阻止默认事件: <br>
+    <a href="https://zengchen233.cn" @click.prevent="print('点击了超链接')">曾晨de小站</a>
 </div>
 <script>
     var app = new Vue({
@@ -21,6 +29,9 @@
             // 递减
             decrement() {
                 this.num--;
+            },
+            print(str) {
+                console.log(str)
             },
         }
     });
