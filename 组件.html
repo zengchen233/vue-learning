@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <!--组件：传递给组件中的值 props-->
+    <!--v-bind为单向绑定，从date -> 页面-->
+    <!--然后这里vue的组件需要拿到data，就需要从属性名中查找-->
+    <zc v-for="item in items" v-bind:item="item"></zc>
+
+</div>
+<script>
+
+    Vue.component("zc", {
+        props: ['item'],
+        template: '<li>{{item}}</li>',
+    });
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            items: ["Java", "Python", "C++", "JavaScript"]
+        }
+    });
+
+
+</script>
+</body>
+</html>

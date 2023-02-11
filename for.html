@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <li v-for="(item, index) in items">
+        {{item.message}} -- {{index}}
+    </li>
+</div>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            items: [
+                {message: 'zcc'},
+                {message: 'xws'},
+                {message: 'wmx'},
+                {message: 'lsl'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>
