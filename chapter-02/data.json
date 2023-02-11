@@ -1,0 +1,25 @@
+{
+  "name":"曾晨de小站",
+  "url": "https://zengchen233.cn",
+  "page": 1,
+  "isNonProfit":true,
+  "address": {
+    "street": "都市静苑",
+    "city":"湖北黄石",
+    "country": "中国"
+  },
+  "links": [
+    {
+      "name": "B站",
+      "url": "https://www.bilibili.com/"
+    },
+    {
+      "name": "4399",
+      "url": "https://www.4399.com/"
+    },
+    {
+      "name": "百度",
+      "url": "https://www.baidu.com/"
+    }
+  ]
+}

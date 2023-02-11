@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios</title>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="vue">
+    {{info}}
+    <hr>
+    <a :href="info.url">点我</a>
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#vue",
+        data() {
+            return {
+                info: {}
+            }
+        },
+        mounted() { // 钩子函数
+            axios.get('data.json')
+                    .then(response => (this.info = response.data));
+        }
+    });
+</script>
+
+</body>
+</html>
