@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <todo>
+        <todo-title slot="todo-title" :title="title"></todo-title>
+        <todo-items slot="todo-items" v-for="(item, index) in todoItems"
+                    :item="item" :index="index" @remove="removeItems(index)"></todo-items>
+    </todo>
+</div>
+<script>
+
+    Vue.component('todo', {
+        template: '<div>' +
+                '<slot name="todo-title"></slot>' +
+                    '<ul>' +
+                        '<slot name="todo-items"></slot>' +
+                    '</ul>' +
+                '</div>'
+    });
+
+    Vue.component('todo-title', {
+        props: ['title'],
+        template: '<div>{{title}}</div>'
+    });
+
+    Vue.component("todo-items", {
+        props: ['item', 'index'],
+        template: '<li>{{item}} <button @click="remove">删除</button> </li>',
+        methods: {
+            //只能绑定当前事件的方法
+            remove: function (index) {
+                // alert('确定要删除吗?');
+                this.$emit('remove', index);
+            },
+        }
+    });
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            todoItems: ['Java', 'Python', 'C++', 'JavaScript'],
+            title: "书籍列表"
+        },
+        methods: {
+            removeItems: function (index) {
+                console.log("删除了" + this.todoItems[index])
+                this.todoItems.splice(index,1); // 一次删除一个元素
+            },
+        }
+    });
+</script>
+
+</body>
+</html>
